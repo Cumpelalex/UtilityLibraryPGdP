@@ -136,11 +136,11 @@ public class MathUtility {
     System.out.printf("Ergebnis: %s\n", result);
 }
     public static double root(int degree, double value, double precision) {
-        // this calculates the nth root of the base
+        // this calculates the nth root of the value
         // source: https://www.sanfoundry.com/java-program-nth-root-algorithm/
         if(value < 0) return -1; // error base is less than 0
-
         if(value == 0) return 0;
+
 
         double x1 = value;
         double x2 = value / degree;
@@ -150,7 +150,7 @@ public class MathUtility {
         }
         return x2;
     }
-// rounded devision
+// miscellaneous
     public static int roundUp(int a, int b) {
         // calculates a / b but always rounds up
         if(a%b == 0) return a/b;
@@ -163,4 +163,21 @@ public class MathUtility {
         if(x < 0) x *= -1;
         return x;
     }
+    public static int fak(int x) {
+        // x! overflow at x > 12
+        int result = 1;
+        for(int i = 2; i <= x; i++) {
+            result *= i;
+        }
+        return result;
+    }
+    public static long fak(long x) {
+        // x!  overflow at x > 20
+        long result = 1;
+        for(int i = 2; i <= x; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
 }

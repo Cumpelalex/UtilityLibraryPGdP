@@ -7,8 +7,19 @@ public class Test {
         ArrayUtility.sortNumbersSmallestFirst(array);
 
         // output
-        System.out.println(MathUtility.root(3, 20, 0.0000001));
+        for(int i = 0; i <= 25; i++) {
+            System.out.println(MathUtility.fak((long)i));
+        }
 
+        System.out.println();
+        char[][] split = ArrayUtility.splitAligned(new char[] {'b', 'c', 'd', 'e', 'a', 'f', 'g'}, 3, ' ', 'a');
+        for(int i = 0; i < split.length; i++) {
+            for(int a = 0; a < split[i].length; a++) {
+                System.out.print(split[i][a]);
+                System.out.print(", ");
+            }
+            System.out.println();
+        }
         //String[] split = StringUtility.splitAligned("1234.56789", 2, ' ', '.');
         //for(int i = 0; i < split.length; i++) {
         //    System.out.printf("%d == %s\n", i, split[i]);

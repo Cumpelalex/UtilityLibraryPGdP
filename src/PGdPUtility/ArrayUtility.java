@@ -262,6 +262,18 @@ public class ArrayUtility {
             }
         }
     }
+    public static void printArray(int[][] array) {
+        printArray(array, ',');
+    }
+    public static void printArray(int[][] array, char seperator) {
+        System.out.print("{\n");
+        for(int i = 0; i < array.length; i++) {
+            System.out.print("\t{");
+            printArray(array[i], seperator);
+            System.out.println("}");
+        }
+        System.out.println("}\n");
+    }
 
 // miscellaneous
     public static char[] resize(char[] array, int newSize) {
@@ -377,5 +389,87 @@ public class ArrayUtility {
         }
 
         return newArray;
+    }
+
+    public static char[][] split(char[] data, char pointToSplit) {
+        // this function will split a string on all points specified
+        // this will remove the pointToSplit
+        int numPointsToPlit = 0;
+        for(int i = 0; i < data.length; i++) {
+            if(data[i] == pointToSplit) numPointsToPlit++;
+        }
+
+        // create the results array and initialize it
+        char[][] results = new char[numPointsToPlit + 1][];
+        // determine how long each segment is
+        int index = 0;
+        int indexResult = 0;
+        for(int i = 0; index < data.length; i++) {
+            if(data[i] == pointToSplit || index == data.length-1) {
+                results[indexResult] = new char[i++];
+                indexResult++;
+                i = 0;
+            }
+            index++;
+        }
+
+
+        // split the array
+        index = 0;
+        int currentResult = 0;
+        for(int i = 0; index < data.length; i++) {
+            if(i >= results[currentResult].length) {
+                currentResult++;
+                i = -1;
+            }
+            else results[currentResult][i] = data[index];
+            index++;
+        }
+
+        return results;
+    }
+    public static char[][] splitAligned(char[] data, int blockSize, char padding, char pointToSplit) {
+        // padding will be added if the block would otherwise be less than blockSize
+        // data the string to split
+        // toAlign the char to align with
+        // blockSize how long each block is
+
+        // split the string along the character to align
+        char[][] split = split(data, pointToSplit);
+        char[] firstHalve = split[0];
+        char[] secondHalve = new char[0];
+        if(split.length > 1) secondHalve = split[1];
+
+        // create the output string
+        int numBlocksFirst = MathUtility.roundUp(firstHalve.length, blockSize);
+        int numPaddingFirst = blockSize - (firstHalve.length % blockSize);
+        if (numPaddingFirst == blockSize) numPaddingFirst = 0; // ensure to not fill an entire block with padding
+        int numBlocksSecond = MathUtility.roundUp(secondHalve.length, blockSize);
+        int numPaddingLast = blockSize - (secondHalve.length % blockSize);
+        if (numPaddingLast == blockSize) numPaddingLast = 0; // ensure to not fill an entire block with padding
+        char[][] result = new char[numBlocksFirst + numBlocksSecond][blockSize];
+        // initialize all strings with certain length
+        for(int i = 0; i < result.length; i++) {
+            for(int a = 0; a < blockSize; a++) {
+                result[i][a] = padding;
+            }
+        }
+
+
+        // populate the result with the first blocks
+        int index = 0;
+        for(int i = 0; i < result.length; i++) {
+            for(int a = 0; a < result[i].length; a++) {
+                if(numPaddingFirst > 0) numPaddingFirst--;
+                else if(index >= data.length) numPaddingLast--;
+                else {
+                    if(data[index] == pointToSplit) index++;
+                    result[i][a] = data[index];
+                    index++;
+                }
+            }
+        }
+
+        return result;
     }
 }
