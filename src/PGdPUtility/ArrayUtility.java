@@ -263,5 +263,119 @@ public class ArrayUtility {
         }
     }
 
+// miscellaneous
+    public static char[] resize(char[] array, int newSize) {
+    // create an array of the new size and copy the data from the original array to the new one
+    char[] newArray = new char[newSize];
 
+    // fill the new array with data
+    // if the original array hase more data, than the new array can hold it will be discarded
+    for(int i = 0; i < newSize; i++) {
+        if(i < array.length) {
+            // use the data stored in the original array
+            newArray[i] = array[i];
+        }
+        else {
+            // fill the rest with 0
+            newArray[i] = 0;
+        }
+    }
+
+    return newArray;
+}
+    public static int[] resize(int[] array, int newSize) {
+        // create an array of the new size and copy the data from the original array to the new one
+        int[] newArray = new int[newSize];
+
+        // fill the new array with data
+        // if the original array hase more data, than the new array can hold it will be discarded
+        for(int i = 0; i < newSize; i++) {
+            if(i < array.length) {
+                // use the data stored in the original array
+                newArray[i] = array[i];
+            }
+            else {
+                // fill the rest with 0
+                newArray[i] = 0;
+            }
+        }
+
+        return newArray;
+    }
+    public static long[] resize(long[] array, int newSize) {
+        // create an array of the new size and copy the data from the original array to the new one
+        long[] newArray = new long[newSize];
+
+        // fill the new array with data
+        // if the original array hase more data, than the new array can hold it will be discarded
+        for(int i = 0; i < newSize; i++) {
+            if(i < array.length) {
+                // use the data stored in the original array
+                newArray[i] = array[i];
+            }
+            else {
+                // fill the rest with 0
+                newArray[i] = 0;
+            }
+        }
+
+        return newArray;
+    }
+    public static boolean[] resize(boolean[] array, int newSize) {
+        // create an array of the new size and copy the data from the original array to the new one
+        boolean[] newArray = new boolean[newSize];
+
+        // fill the new array with data
+        // if the original array hase more data, than the new array can hold it will be discarded
+        for(int i = 0; i < newSize; i++) {
+            if(i < array.length) {
+                // use the data stored in the original array
+                newArray[i] = array[i];
+            }
+            else {
+                // fill the rest with false
+                newArray[i] = false;
+            }
+        }
+
+        return newArray;
+    }
+    public static float[] resize(float[] array, int newSize) {
+        // create an array of the new size and copy the data from the original array to the new one
+        float[] newArray = new float[newSize];
+
+        // fill the new array with data
+        // if the original array hase more data, than the new array can hold it will be discarded
+        for(int i = 0; i < newSize; i++) {
+            if(i < array.length) {
+                // use the data stored in the original array
+                newArray[i] = array[i];
+            }
+            else {
+                // fill the rest with 0
+                newArray[i] = 0;
+            }
+        }
+
+        return newArray;
+    }
+    public static double[] resize(double[] array, int newSize) {
+        // create an array of the new size and copy the data from the original array to the new one
+        double[] newArray = new double[newSize];
+
+        // fill the new array with data
+        // if the original array hase more data, than the new array can hold it will be discarded
+        for(int i = 0; i < newSize; i++) {
+            if(i < array.length) {
+                // use the data stored in the original array
+                newArray[i] = array[i];
+            }
+            else {
+                // fill the rest with 0
+                newArray[i] = 0;
+            }
+        }
+
+        return newArray;
+    }
 }
