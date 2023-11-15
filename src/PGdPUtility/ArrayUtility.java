@@ -274,8 +274,41 @@ public class ArrayUtility {
         }
         System.out.println("}\n");
     }
+    public static  void printArray(char[] array) {
+        for(int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
 
-// miscellaneous
+            // print the separator if (only if it is not the last element)
+            if(i < array.length - 1) {
+                System.out.print(", ");
+            }
+        }
+    }
+    public static  void printArray(char[] array, char separator) {
+        for(int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+
+            // print the seperator if (only if it is not the last element)
+            if(i < array.length - 1) {
+                System.out.print(separator);
+                System.out.print(' ');
+            }
+        }
+    }
+    public static void printArray(char[][] array) {
+        printArray(array, ',');
+    }
+    public static void printArray(char[][] array, char seperator) {
+        System.out.print("{\n");
+        for(int i = 0; i < array.length; i++) {
+            System.out.print("\t{");
+            printArray(array[i], seperator);
+            System.out.println("}");
+        }
+        System.out.println("}\n");
+    }
+
+    // miscellaneous
     public static char[] resize(char[] array, int newSize) {
     // create an array of the new size and copy the data from the original array to the new one
     char[] newArray = new char[newSize];
@@ -391,6 +424,60 @@ public class ArrayUtility {
         return newArray;
     }
 
+    public static char[][] splitAt(char[] array, int index) {
+        // [0, index[ [index, array.length[
+        if(index <= 0)  return null; // error
+
+        int length1 = index;
+        int length2 = array.length - index;
+
+        char[][] split = new char[2][];
+        split[0] = new char[length1];
+        split[1] = new char[length2];
+
+        for(int i = 0; i < array.length; i++) {
+            if(i < index) split[0][i] = array[i];
+            else split[1][i-index] = array[i];
+        }
+
+        return split;
+    }
+    public static int[][] splitAt(int[] array, int index) {
+        // [0, index[ [index, array.length[
+        if(index <= 0)  return null; // error
+
+        int length1 = index;
+        int length2 = array.length - index;
+
+        int[][] split = new int[2][];
+        split[0] = new int[length1];
+        split[1] = new int[length2];
+
+        for(int i = 0; i < array.length; i++) {
+            if(i < index) split[0][i] = array[i];
+            else split[1][i-index] = array[i];
+        }
+
+        return split;
+    }
+    public static long[][] splitAt(long[] array, int index) {
+        // [0, index[ [index, array.length[
+        if(index <= 0)  return null; // error
+
+        int length1 = index;
+        int length2 = array.length - index;
+
+        long[][] split = new long[2][];
+        split[0] = new long[length1];
+        split[1] = new long[length2];
+
+        for(int i = 0; i < array.length; i++) {
+            if(i < index) split[0][i] = array[i];
+            else split[1][i-index] = array[i];
+        }
+
+        return split;
+    }
     public static char[][] split(char[] data, char pointToSplit) {
         // this function will split a string on all points specified
         // this will remove the pointToSplit

@@ -12,7 +12,7 @@ public class Test {
         }
 
         System.out.println();
-        char[][] split = ArrayUtility.splitAligned(new char[] {'b', 'c', 'd', 'e', 'a', 'f', 'g'}, 3, ' ', 'a');
+        char[][] split = ArrayUtility.splitAligned(new char[] {'a', 'b', 'c', 'd', 'e', 'f'}, 3, ' ', 'a');
         for(int i = 0; i < split.length; i++) {
             for(int a = 0; a < split[i].length; a++) {
                 System.out.print(split[i][a]);
@@ -20,6 +20,10 @@ public class Test {
             }
             System.out.println();
         }
+
+        System.out.println();
+        int[][] s2 = ArrayUtility.splitAt(new int[] {1, 2, 3, 4, 5, 6, 7}, 2);
+        ArrayUtility.printArray(s2);
         //String[] split = StringUtility.splitAligned("1234.56789", 2, ' ', '.');
         //for(int i = 0; i < split.length; i++) {
         //    System.out.printf("%d == %s\n", i, split[i]);
